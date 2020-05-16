@@ -1,0 +1,251 @@
+﻿body {
+    padding-top: 90px;
+    padding-bottom: 0px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.btn-primary {
+    background-color: #ff4342;
+    border-color: #ff4342;
+}
+
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    position: absolute;
+    margin-left: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+    font-weight:700;
+    font-size:20px;
+}
+.navbar-inverse .notifications .badge {
+    position: relative;
+    top: -11px;
+    right: 2px;
+    color: white;
+    background-color: black
+}
+
+.btn-success {
+    color: white;
+    background-color: #ff4342;
+    border-color: #ff4342;
+    border-radius: 6px;
+}
+
+.btn-success:hover {
+    color: white;
+    background-color: #ff4342;
+    border-color: #ff4342;
+    
+}
+
+.text-danger {
+    color: red;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 6px 12px;
+    box-shadow: #ff4342;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+.form-control :focus{
+    border-color: #ff4342;
+    box-shadow: none;
+    -webkit-box-shadow:none;
+}
+.gigs{
+    list-style:none;
+}
+.gigs > li{
+    position :relative;
+    margin-bottom:30px;
+}
+.gigs > li .details {
+    position: absolute;
+    top: 0px;
+    left: 70px;
+}
+.gigs > li .date {
+    background-color :red ;
+    color:white;
+    text-align: center;
+    width:60px;
+    border-radius:8px
+}
+.gigs > li .date .month{
+    text-align :center;
+    text-transform:uppercase;
+    font-size:14px;
+    font-weight:bold;
+    padding:2px 6px;
+    
+}
+
+.gigs > li .date .day {
+    background-color: #f7f7f7;
+    color: #333;
+    font-size: 20px;
+    padding: 6px 12px;
+}
+
+.gigs > li .details .artist{
+    font-weight:bold;
+    display:block;
+    font-size:18px
+}
+.gigs > li .details .genre {
+    font-size: 15px
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    border-radius: 8px;
+}
+
+.gigs > li .details .artist {
+    font-weight: bold;
+    display: block;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.gigs > li .details .genre {
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.gigs > li .editAction {
+    font-size:15px;
+    display:block;
+}
+.gigs > li:hover .editAction{
+    
+    display: block;
+}
+.gigs > li .Cancel {
+    font-size: 15px;
+    display: block;
+}
+
+.gigs > li:hover .Cancel {
+    font-size: 15px;
+    display: block;
+}
+
+.label-danger {
+    background-color: #c50904;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #ca3737;
+}
+ul.notificationsView{
+    list-style:none;
+    padding-left:0;
+
+}
+
+ul.notificationsView >li {
+    border-bottom:1px solid #ccc;
+}
+
+ul.notificationsView > li:last-child {
+    border-bottom: none;
+}
+
+.popover-title {
+    padding: 8px 14px;
+    margin: 0;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.075);
+    border-bottom: 1px solid #b0acac;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    font-family: 'Work Sans', sans-serif
+}
+
+ul.notificationsView > li .highlits {
+    font-weight:bold;
+    text-transform:capitalize;
+}
+
+.popover {
+    box-shadow: none;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 178px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-shadow: none;
+}
+.search-box{
+    display:block;
+    padding-top:7px;
+    padding-left:17px;
+    box-shadow:none;
+}

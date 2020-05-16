@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+    <title>Gig Hub</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("GigHub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Gigs", "Create", "Gigs")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="container ">
+            <p>&copy; @DateTime.Now.Year/@DateTime.Now.Month - All Rights Resived</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/x-handlebars-template" id="notification-template">
+        <ul class="notificationsView">
+            <%
+            _.each(notifications, function(notification){
+            if(notification.Type == 1){ %>
+            <li><span class="highlits"><%= notification.Gig.Artist.Name %></span> has cancled the gig <%= notification.Gig.Venue %> at <%= moment(notification.Gig.DateTime).format("D MMM yyyy HH:mm") %>.</li>
+                <% }
+                    else if (notification.Type == 2){
+                        var changes = [],
+                            originalValues = [],
+                            newValues = [];
+
+                    if (notification.OriginalVenue != notification.Gig.Venue){
+                        changes.push('Venue');
+                        originalValues.push(notification.OriginalVenue);
+                        newValues.push(notification.Gig.Venue)
+                    }
+
+                    if (notification.OriginalDateTime != notification.Gig.DateTime){
+                        changes.push('Date/Time')
+                        originalValues.push(moment(notification.OriginalDateTime)).format("D MMM yyyy HH:mm")
+                        newValues.push(moment(notification.Gig.DateTime)).format("D MMM yyyy HH:mm")
+                    }
+                 %>
+            <li> <span class="highlits"> <%= notification.Gig.Artist.Name %></span> has changed the <%= changes.join(' and ') %> of the gig from <%= originalValues.join('/') %> to <%= newValues.join('/') %></li>
+                <%
+            }
+            })
+            %>
+        </ul>
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("/api/notifications", function (notifications) {
+                if (notifications == 0)
+                    return;
+
+                $(".js-notifications-count") 
+                    .text(notifications.length)
+                    .removeClass("hide");
+
+                $(".notifications").popover({
+                    html: true,
+                    title: "Notifications",
+                    content: function () {
+                        var compiled = _.template($("#notification-template").html());
+                        return compiled({ notifications: notifications });
+                    },
+                    placement: "bottom",
+                }).on("show.bs.popover", function () {
+                    $.post("/api/notifications/MarkAsRead")
+                        .done(function () {
+                            $(".js-notifications-count")
+                                .text("")
+                                .addClass("hide");
+                        });
+                });
+                    
+            });
+        });
+    </script>
+</body>
+</html>
